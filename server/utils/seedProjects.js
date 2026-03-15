@@ -4,7 +4,7 @@ const defaultProjects = [
   // Bedroom (4)
   {
     title: "Serene Master Bedroom",
-    image: "/assets/projects/bedroom1.jpeg",
+    image: "/assets/projects/bedroom3.jpeg",
     category: "Bedroom",
     description: "Layered linens, warm woods, and soft lighting for a calm retreat.",
   },
@@ -36,7 +36,7 @@ const defaultProjects = [
   },
   {
     title: "Heritage Bridal Lounge",
-    image: "/assets/projects/bridal1.jpeg",
+    image: "/assets/projects/bridal5.jpeg",
     category: "Bridal Room",
     description: "Statement seating and layered textiles for a celebratory bridal suite.",
   },
@@ -56,7 +56,7 @@ const defaultProjects = [
   // Kitchen (4)
   {
     title: "Minimal Chef's Kitchen",
-    image: "/assets/projects/kitchen5.jpeg",
+    image: "/assets/projects/kitchen1.jpeg",
     category: "Kitchen",
     description: "Streamlined cabinetry with stone counters and integrated lighting.",
   },
@@ -74,7 +74,7 @@ const defaultProjects = [
   },
   {
     title: "Social Dining Kitchen",
-    image: "/assets/projects/dining .jpeg",
+    image: "/assets/projects/kitchen5.jpeg",
     category: "Kitchen",
     description: "Dining-forward kitchen layout with relaxed seating and ambient lighting.",
   },
@@ -88,19 +88,19 @@ const defaultProjects = [
   },
   {
     title: "Garden View Lounge",
-    image: "/assets/projects/project4.jpeg",
+    image: "/assets/projects/dining.jpeg",
     category: "Living Room",
     description: "Indoor-outdoor living with greenery, neutral upholstery, and sculptural decor.",
   },
   {
     title: "Warm Gathering Living Room",
-    image: "/assets/projects/project1.jpg",
+    image: "/assets/projects/livingroom4.jpg",
     category: "Living Room",
     description: "Plush seating and warm tones designed for conversation and connection.",
   },
   {
     title: "Sunlit Studio Lounge",
-    image: "/assets/projects/project4.jpeg",
+    image: "/assets/projects/livingroom3.jpg",
     category: "Living Room",
     description: "Open-plan lounge anchored by clean lines and natural textures.",
   },
@@ -109,6 +109,10 @@ const defaultProjects = [
 export async function seedProjects() {
   let inserted = 0;
   let updated = 0;
+  // Keep the collection constrained to these seed titles to avoid stale duplicates
+  const allowedTitles = defaultProjects.map((p) => p.title);
+  await Project.deleteMany({ title: { $nin: allowedTitles } });
+
   for (const project of defaultProjects) {
     const res = await Project.updateOne(
       { title: project.title },

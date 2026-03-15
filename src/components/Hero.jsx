@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 export default function Hero() {
+  const location = useLocation();
+
+  const handleContactClick = (e) => {
+    // Smooth scroll to contact if already on home; otherwise let router handle navigation
+    if (location.pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById("contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative isolate flex items-center overflow-hidden bg-gray-900 min-h-[90vh]">
       <img
@@ -37,6 +48,7 @@ export default function Hero() {
             </Link>
             <Link
               to="/#contact"
+              onClick={handleContactClick}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-blue-400 hover:text-blue-200 w-full sm:w-auto"
             >
               Contact Us
