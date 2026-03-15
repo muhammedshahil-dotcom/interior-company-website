@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HiStar, HiOutlineStar } from "react-icons/hi";
 import { useAuth } from "../context/AuthContext";
+import { API_BASE } from "../config/api";
 
 const StarDisplay = ({ value }) => {
   const rating = Math.max(1, Math.min(5, Math.round(value || 0)));
@@ -28,7 +29,7 @@ export default function Reviews() {
   const loadReviews = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/reviews");
+      const res = await fetch(`${API_BASE}/reviews`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Unable to load reviews");
       setReviews(data);
@@ -50,7 +51,7 @@ export default function Reviews() {
     setSubmitting(true);
     setError("");
     try {
-      await authFetch("/api/reviews", {
+      await authFetch(`${API_BASE}/reviews`, {
         method: "POST",
         body: JSON.stringify({
           rating: Number(form.rating),

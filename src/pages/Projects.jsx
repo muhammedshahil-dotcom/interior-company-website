@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { API_BASE } from "../config/api";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -16,7 +17,7 @@ export default function Projects() {
   const fetchProjects = async () => {
     try {
       const query = activeCategory ? `?category=${encodeURIComponent(activeCategory)}` : "";
-      const res = await fetch(`/api/projects${query}`);
+      const res = await fetch(`${API_BASE}/projects${query}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Unable to load projects");
       setProjects(data);
