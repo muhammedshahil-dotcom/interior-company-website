@@ -64,10 +64,10 @@ export default function Navbar() {
               className="h-11 w-auto rounded-full object-cover"
             />
             <div className="leading-tight">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-gray-500">
+              <p className="text-[15px] sm:text-lg font-bold uppercase tracking-[0.28em] text-black">
                 Elora
               </p>
-              <p className="text-base sm:text-lg font-semibold">Interiors</p>
+              <p className="text-xs sm:text-sm font-semibold text-gray-900">Interiors</p>
             </div>
           </Link>
 
