@@ -39,6 +39,7 @@ export default function Reviews() {
     }
   };
 
+  // Load all reviews on mount so the homepage always reflects the latest client feedback.
   useEffect(() => {
     loadReviews();
   }, []);

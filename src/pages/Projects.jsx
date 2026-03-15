@@ -12,6 +12,7 @@ export default function Projects() {
   const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const activeCategory = searchParams.get("category");
 
+  // Fetch projects from the API, optionally filtered by category via query string.
   const fetchProjects = async () => {
     try {
       const query = activeCategory ? `?category=${encodeURIComponent(activeCategory)}` : "";
@@ -30,6 +31,7 @@ export default function Projects() {
     fetchProjects();
   }, [activeCategory]);
 
+  // Decide which category sections to show; if a filter is passed but unknown, fall back to all.
   const normalizedCategory = activeCategory?.toLowerCase();
   let visibleCategories = activeCategory
     ? categoriesOrder.filter((cat) => cat.toLowerCase() === normalizedCategory)

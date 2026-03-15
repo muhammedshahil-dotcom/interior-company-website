@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Load environment variables from the backend .env (includes Atlas URI, email creds, etc.)
 dotenv.config({ path: path.join(__dirname, ".env") });
 
 import authRoutes from "./routes/auth.js";
@@ -39,6 +40,7 @@ async function start() {
     if (!MONGO_URI) {
       throw new Error("MONGO_URI environment variable is missing");
     }
+    // Single Mongo connection reused across routes
     await mongoose.connect(MONGO_URI);
     console.log("Connected to MongoDB Atlas");
     await seedProjects();

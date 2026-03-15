@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const { category } = req.query;
+  // Optional category filter (case-insensitive) for faster client filtering
   const filter = category
     ? { category: { $regex: `^${category}$`, $options: "i" } }
     : {};

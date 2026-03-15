@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HiOutlineMenuAlt3, HiX, HiSparkles } from "react-icons/hi";
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { useAuth } from "../context/AuthContext";
 
 const links = [
@@ -18,6 +18,7 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
+    // Track scroll to toggle background/blur for readability
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll);
@@ -29,6 +30,7 @@ export default function Navbar() {
       ? "bg-white/95 shadow-lg backdrop-blur-xl border-b border-gray-100"
       : "bg-white border-b border-gray-100";
 
+  // Scrolls to in-page sections when hash links are clicked; falls back to navigation for other routes.
   const handleAnchor = (href) => {
     setOpen(false);
     if (href.includes("#")) {
@@ -55,9 +57,12 @@ export default function Navbar() {
             className="flex items-center gap-3 text-gray-900 group"
             onClick={() => setOpen(false)}
           >
-            <div className="h-10 w-10 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg transition group-hover:-translate-y-0.5">
-              <HiSparkles className="text-lg" />
-            </div>
+            <img
+              src="/assets/logo.jpg"
+              alt="Elora Interiors logo"
+              loading="lazy"
+              className="h-11 w-auto rounded-full object-cover"
+            />
             <div className="leading-tight">
               <p className="text-[11px] uppercase tracking-[0.28em] text-gray-500">
                 Elora

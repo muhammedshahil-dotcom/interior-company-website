@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ message: "Name, email, and message are required." });
   }
   try {
+    // Persist inquiry even if email delivery later fails
     const entry = await Contact.create({ name, email, phone, projectType, message });
 
     const { EMAIL_USER, EMAIL_PASS } = process.env;

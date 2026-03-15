@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const categories = [
   {
     name: "Bedroom",
-    image: "/assets/categories/bedroom.jpg",
+    image: "/assets/categories/",
     description: "Soft palettes, sculptural bedside lighting, and bespoke wardrobes tailored to your rituals.",
   },
   {

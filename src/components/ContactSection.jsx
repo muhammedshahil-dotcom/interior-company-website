@@ -24,8 +24,8 @@ const contactInfo = [
   {
     icon: FaInstagram,
     label: "Instagram",
-    value: "@elysian_casa",
-    href: "https://www.instagram.com/elysian_casa",
+    value: "@elora_interiors__",
+    href: "https://www.instagram.com/elora_interiors__",
   },
 ];
 
