@@ -65,7 +65,7 @@ export default function ContactSection() {
     <section id="contact" className="relative overflow-hidden bg-gray-900 py-16 sm:py-20 text-white">
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800" />
       <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl" />
-      <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 sm:px-6 lg:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div data-aos="fade-right" className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-200">
             Let's talk about your space

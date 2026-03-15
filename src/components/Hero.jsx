@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/25" />
       <div className="absolute -left-40 -bottom-32 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 sm:px-6 pt-28 pb-16 sm:pb-20 md:grid md:grid-cols-2 md:items-center md:gap-14 md:pt-32 md:pb-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pb-20 md:grid md:grid-cols-2 md:items-center md:gap-14 md:pt-32 md:pb-24">
         <div data-aos="fade-up" data-aos-delay="50" className="space-y-6">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-blue-200 ring-1 ring-white/15 backdrop-blur">
             Modern • Minimal • Lux

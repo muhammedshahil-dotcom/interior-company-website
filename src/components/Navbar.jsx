@@ -47,10 +47,8 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navStyles}`}
-    >
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6">
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navStyles}`}>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3 sm:py-4">
           <Link
             to="/"

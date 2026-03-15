@@ -26,7 +26,7 @@ const categories = [
 export default function Categories() {
   return (
     <section id="categories" className="bg-white py-20">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-2 text-center" data-aos="fade-up">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-500">
             Design categories

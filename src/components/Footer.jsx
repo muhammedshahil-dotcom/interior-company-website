@@ -12,7 +12,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-sm space-y-3">
           <p className="text-xs uppercase tracking-[0.25em] text-blue-200">Elora Interiors</p>
           <p className="text-lg font-semibold">Modern interiors that feel calm, intentional, and beautifully lived in.</p>
@@ -62,12 +62,14 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-2 px-6 py-4 text-xs text-gray-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>Â© {new Date().getFullYear()} Elora Interiors. All rights reserved.</p>
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-2 px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Elora Interiors. All rights reserved.</p>
           <p className="text-gray-500">Made with intention & detail.</p>
         </div>
       </div>
     </footer>
   );
 }
+
+
 

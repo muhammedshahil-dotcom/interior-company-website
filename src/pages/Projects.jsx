@@ -49,7 +49,7 @@ export default function Projects() {
   }));
 
   return (
-    <main className="bg-gray-50 text-gray-800">
+    <main className="bg-gray-50 text-gray-800 w-full min-h-screen">
       <section className="relative isolate overflow-hidden bg-gray-900 pt-32 pb-16 text-white">
         <img
           src="/assets/projects/project1.jpg"
@@ -57,7 +57,7 @@ export default function Projects() {
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-900/70" />
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-200">
             Portfolio
           </p>
@@ -81,7 +81,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         {loading && <p className="text-gray-700">Loading projects...</p>}
         {error && (
           <p className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">
