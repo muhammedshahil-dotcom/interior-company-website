@@ -55,7 +55,7 @@ export default function Footer() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">Contact</p>
             <div className="mt-4 space-y-2 text-sm text-gray-200">
               <p>contact.elorainteriors@gmail.com</p>
-              <p>+91 62825 555875</p>
+              <p>+91 62825 55875</p>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-2 px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Elora Interiors. All rights reserved.</p>
+          <p> {new Date().getFullYear()} Elora Interiors. All rights reserved.</p>
           <p className="text-gray-500">Made with intention & detail.</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HiOutlinePhone, HiOutlineMail, HiOutlineArrowRight } from "react-icons/hi";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { API_BASE } from "../config/api";
 
 const contactInfo = [
   {
@@ -52,8 +53,8 @@ export default function ContactSection() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Unable to send message");
-      setStatus({ type: "success", message: "Thanks for reaching out. We will respond within 24 hours." });
-      setFormData({ name: "", email: "", projectType: "", message: "" });
+      setStatus({ type: "success", message: "Message sent successfully. We will contact you soon." });
+      setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
     } catch (err) {
       setStatus({ type: "error", message: err.message });
     } finally {
@@ -62,7 +63,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-gray-900 py-16 sm:py-20 text-white">
+    <section id="contact" className="relative w-full overflow-hidden bg-gray-900 py-16 sm:py-20 text-white">
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800" />
       <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl" />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:px-8 lg:grid-cols-[1.1fr_0.9fr]">

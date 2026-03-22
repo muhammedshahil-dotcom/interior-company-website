@@ -5,7 +5,7 @@ import Reviews from "../components/Reviews";
 
 export default function Home() {
   return (
-    <main className="bg-gray-50 text-gray-800">
+    <main className="w-full bg-gray-50 text-gray-800">
       <Hero />
       <Categories />
       <Reviews />

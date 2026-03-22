@@ -14,7 +14,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative isolate flex items-center overflow-hidden bg-gray-900 min-h-[90vh]">
+    <section className="relative isolate flex w-full items-center overflow-hidden bg-gray-900 min-h-[90vh]">
       <img
         src="/assets/hero.jpg"
         alt="Modern living room designed by Elora Interiors"

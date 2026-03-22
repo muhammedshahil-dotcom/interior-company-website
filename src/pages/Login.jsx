@@ -26,49 +26,51 @@ export default function Login() {
   };
 
   return (
-    <main className="bg-gray-50 min-h-screen flex items-center justify-center px-6 py-24">
-      <div className="w-full max-w-md rounded-3xl border border-gray-100 bg-white p-8 shadow-[0_14px_40px_-30px_rgba(0,0,0,0.35)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-500">Login</p>
-        <h1 className="mt-2 text-3xl font-semibold text-gray-900">Welcome back</h1>
-        <p className="mt-1 text-sm text-gray-600">Sign in to submit reviews and view saved projects.</p>
+    <main className="w-full bg-gray-50 min-h-screen flex items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="mx-auto w-full max-w-2xl rounded-3xl border border-gray-100 bg-white p-8 shadow-[0_14px_40px_-30px_rgba(0,0,0,0.35)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-500">Login</p>
+          <h1 className="mt-2 text-3xl font-semibold text-gray-900">Welcome back</h1>
+          <p className="mt-1 text-sm text-gray-600">Sign in to submit reviews and view saved projects.</p>
 
-        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-          <label className="flex flex-col gap-2 text-sm text-gray-700">
-            Email
-            <input
-              required
-              type="email"
-              value={form.email}
-              onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-              className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
-            />
-          </label>
-          <label className="flex flex-col gap-2 text-sm text-gray-700">
-            Password
-            <input
-              required
-              type="password"
-              value={form.password}
-              onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-              className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
-            />
-          </label>
-          {error && <p className="text-sm text-red-500">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-full bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {loading ? "Signing in..." : "Login"}
-          </button>
-        </form>
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <label className="flex flex-col gap-2 text-sm text-gray-700">
+              Email
+              <input
+                required
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-sm text-gray-700">
+              Password
+              <input
+                required
+                type="password"
+                value={form.password}
+                onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
+                className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            {error && <p className="text-sm text-red-500">{error}</p>}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-full bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Signing in..." : "Login"}
+            </button>
+          </form>
 
-        <p className="mt-4 text-sm text-gray-600">
-          New here?{" "}
-          <Link to="/register" className="font-semibold text-blue-500 hover:underline">
-            Create an account
-          </Link>
-        </p>
+          <p className="mt-4 text-sm text-gray-600">
+            New here?{" "}
+            <Link to="/register" className="font-semibold text-blue-500 hover:underline">
+              Create an account
+            </Link>
+          </p>
+        </div>
       </div>
     </main>
   );

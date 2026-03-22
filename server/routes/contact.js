@@ -1,4 +1,4 @@
-import express from "express";
+﻿import express from "express";
 import Contact from "../models/Contact.js";
 import nodemailer from "nodemailer";
 
@@ -24,20 +24,25 @@ router.post("/", async (req, res) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
       },
-      tls: { rejectUnauthorized: false },
     });
 
     const mailOptions = {
-      from: EMAIL_USER,
-      to: EMAIL_USER,
-      subject: "New Contact Message – Elora Interiors",
+      from: `"Elora Interiors Website" <${EMAIL_USER}>`,
+      to: "contact.elorainteriors@gmail.com",
+      subject: "New Contact Form Submission - Elora Interiors",
+      html: `
+        <h2>New Inquiry</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+        <p><strong>Project Type:</strong> ${projectType || "Not provided"}</p>
+        <p><strong>Message:</strong><br/>${(message || "").replace(/\\n/g, "<br/>")}</p>
+      `,
       text: `Name: ${name}
 Email: ${email}
 Phone: ${phone || "Not provided"}
@@ -45,17 +50,17 @@ Project Type: ${projectType || "Not provided"}
 Message: ${message}`,
     };
 
-    try {
-      await transporter.sendMail(mailOptions);
-      return res.status(201).json({ message: "Inquiry received", id: entry._id, emailStatus: "sent" });
-    } catch (mailErr) {
-      console.error("Email send failed", mailErr);
-      return res.status(201).json({
-        message: "Inquiry received. Email notification could not be sent.",
-        id: entry._id,
-        emailStatus: "failed",
-      });
-    }
+    // Fire-and-forget email to keep API responsive
+    setImmediate(() => {
+      transporter
+        .sendMail(mailOptions)
+        .then(() => console.log("Contact email dispatched"))
+        .catch((mailErr) => console.error("Email send failed", mailErr));
+    });
+
+    return res
+      .status(201)
+      .json({ message: "Inquiry received", id: entry._id, emailStatus: "queued" });
   } catch (error) {
     console.error("Contact submission failed", error);
     res.status(500).json({ message: "Unable to process request right now." });
@@ -63,3 +68,4 @@ Message: ${message}`,
 });
 
 export default router;
+

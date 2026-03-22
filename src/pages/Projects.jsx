@@ -53,7 +53,7 @@ export default function Projects() {
     <main className="bg-gray-50 text-gray-800 w-full min-h-screen">
       <section className="relative isolate overflow-hidden bg-gray-900 pt-32 pb-16 text-white">
         <img
-          src="/assets/projects/project1.jpg"
+          src="/assets/projects/livingroom4.jpg"
           alt="Featured interior project"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
@@ -101,7 +101,7 @@ export default function Projects() {
                   {items.length} project{items.length === 1 ? "" : "s"}
                 </span>
               </div>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {items.length === 0 && (
                   <p className="col-span-full rounded-2xl border border-gray-100 bg-gray-50 px-4 py-3 text-sm text-gray-600">
                     Projects for this category are coming soon.
