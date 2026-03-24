@@ -34,21 +34,25 @@ export default function Login() {
           <p className="mt-1 text-sm text-gray-600">Sign in to submit reviews and view saved projects.</p>
 
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-            <label className="flex flex-col gap-2 text-sm text-gray-700">
+            <label className="flex flex-col gap-2 text-sm text-gray-700" htmlFor="login-email">
               Email
               <input
                 required
                 type="email"
+                id="login-email"
+                name="email"
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm text-gray-700">
+            <label className="flex flex-col gap-2 text-sm text-gray-700" htmlFor="login-password">
               Password
               <input
                 required
                 type="password"
+                id="login-password"
+                name="password"
                 value={form.password}
                 onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
                 className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"

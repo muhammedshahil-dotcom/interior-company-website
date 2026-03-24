@@ -2,6 +2,7 @@ import { useState } from "react";
 import { HiOutlinePhone, HiOutlineMail, HiOutlineArrowRight } from "react-icons/hi";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { API_BASE } from "../config/api";
+import { useAuth } from "../context/AuthContext";
 
 const contactInfo = [
   {
@@ -31,6 +32,7 @@ const contactInfo = [
 ];
 
 export default function ContactSection() {
+  const { isAuthenticated, authFetch } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,17 +45,21 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isAuthenticated) {
+      setStatus({ type: "error", message: "Please log in to send a message." });
+      return;
+    }
     setSubmitting(true);
     setStatus({ type: "", message: "" });
     try {
-      const res = await fetch(`${API_BASE}/contact`, {
+      await authFetch(`${API_BASE}/contact`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Unable to send message");
-      setStatus({ type: "success", message: "Message sent successfully. We will contact you soon." });
+      setStatus({
+        type: "success",
+        message: "Message sent successfully. We will contact you soon.",
+      });
       setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
     } catch (err) {
       setStatus({ type: "error", message: err.message });
@@ -78,32 +84,38 @@ export default function ContactSection() {
 
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <label className="flex flex-col gap-2 text-sm">
+              <label className="flex flex-col gap-2 text-sm" htmlFor="contact-name">
                 Full name
                 <input
                   required
                   type="text"
+                  id="contact-name"
+                  name="name"
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={(e) => setFormData((f) => ({ ...f, name: e.target.value }))}
                   className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-gray-400 focus:border-blue-400 focus:outline-none"
                 />
               </label>
-              <label className="flex flex-col gap-2 text-sm">
+              <label className="flex flex-col gap-2 text-sm" htmlFor="contact-email">
                 Email
                 <input
                   required
                   type="email"
+                  id="contact-email"
+                  name="email"
                   placeholder="Enter your email address"
                   value={formData.email}
                   onChange={(e) => setFormData((f) => ({ ...f, email: e.target.value }))}
                   className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-gray-400 focus:border-blue-400 focus:outline-none"
                 />
               </label>
-              <label className="flex flex-col gap-2 text-sm">
+              <label className="flex flex-col gap-2 text-sm" htmlFor="contact-phone">
                 Phone (optional)
                 <input
                   type="tel"
+                  id="contact-phone"
+                  name="phone"
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={(e) => setFormData((f) => ({ ...f, phone: e.target.value }))}
@@ -111,21 +123,25 @@ export default function ContactSection() {
                 />
               </label>
             </div>
-            <label className="flex flex-col gap-2 text-sm">
+            <label className="flex flex-col gap-2 text-sm" htmlFor="contact-project-type">
               Project type
               <input
                 type="text"
+                id="contact-project-type"
+                name="projectType"
                 placeholder="Select project type (Bedroom, Kitchen, Living Room, Bridal Room)"
                 value={formData.projectType}
                 onChange={(e) => setFormData((f) => ({ ...f, projectType: e.target.value }))}
                 className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-gray-400 focus:border-blue-400 focus:outline-none"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm">
+            <label className="flex flex-col gap-2 text-sm" htmlFor="contact-message">
               Tell us more
               <textarea
                 required
                 rows={4}
+                id="contact-message"
+                name="message"
                 placeholder="Tell us about your project requirements"
                 value={formData.message}
                 onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
@@ -139,10 +155,10 @@ export default function ContactSection() {
             )}
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || !isAuthenticated}
               className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200/30 transition hover:-translate-y-0.5 hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {submitting ? "Sending..." : "Send message"}
+              {submitting ? "Sending..." : isAuthenticated ? "Send message" : "Login to send"}
               <HiOutlineArrowRight className="h-4 w-4" />
             </button>
           </form>

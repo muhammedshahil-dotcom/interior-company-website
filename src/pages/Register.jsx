@@ -34,31 +34,37 @@ export default function Register() {
           <p className="mt-1 text-sm text-gray-600">Create an account to submit real reviews.</p>
 
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-            <label className="flex flex-col gap-2 text-sm text-gray-700">
+            <label className="flex flex-col gap-2 text-sm text-gray-700" htmlFor="register-name">
               Full name
               <input
                 required
                 type="text"
+                id="register-name"
+                name="name"
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                 className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm text-gray-700">
+            <label className="flex flex-col gap-2 text-sm text-gray-700" htmlFor="register-email">
               Email
               <input
                 required
                 type="email"
+                id="register-email"
+                name="email"
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm text-gray-700">
+            <label className="flex flex-col gap-2 text-sm text-gray-700" htmlFor="register-password">
               Password
               <input
                 required
                 type="password"
+                id="register-password"
+                name="password"
                 value={form.password}
                 onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
                 className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm text-gray-800 focus:border-blue-400 focus:outline-none"
