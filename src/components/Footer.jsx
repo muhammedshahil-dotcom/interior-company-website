@@ -18,7 +18,7 @@ export default function Footer() {
           <p className="text-lg font-semibold">Modern interiors that feel calm, intentional, and beautifully lived in.</p>
           <div className="flex items-center gap-3">
             {[
-              { Icon: FaInstagram, href: "https://www.instagram.com/elysian_casa", label: "Instagram" },
+              { Icon: FaInstagram, href: "https://www.instagram.com/elora_interiors__", label: "Instagram" },
               { Icon: FaWhatsapp, href: "https://wa.me/916282555875", label: "WhatsApp" },
               { Icon: HiOutlineMail, href: "mailto:contact.elorainteriors@gmail.com", label: "Email" },
             ].map(({ Icon, href, label }) => (
