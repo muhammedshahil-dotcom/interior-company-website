@@ -8,6 +8,7 @@ const links = [
   { label: "Categories", href: "/#categories" },
   { label: "Projects", href: "/projects" },
   { label: "Reviews", href: "/#reviews" },
+  { label: "Careers", href: "/#careers" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -174,4 +175,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
