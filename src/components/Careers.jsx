@@ -2,7 +2,7 @@ const jobs = [
   {
     title: "Interior Designer",
     location: "Kannur",
-    qualification: "degree / Interior Design",
+    qualification: "Degree / Interior Design",
     experience: "1-3 Years",
     specialization: "Residential Interiors",
   },
